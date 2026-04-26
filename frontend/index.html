@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediTrack — Live Hospital Resource Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">🏥 MediTrack</div>
+    <div class="nav-links">
+      <a href="#blood">Blood Banks</a>
+      <a href="#donors">Donors</a>
+      <a href="#map">Find Nearby</a>
+      <button class="register-btn" onclick="showRegister()">
+        Register as Donor
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Find Blood & Emergency Beds <span>Instantly</span></h1>
+    <p>Real-time availability of blood banks, donors, and emergency resources near you.</p>
+    <div class="search-bar">
+      <select id="blood-type">
+        <option value="">Select Blood Type</option>
+        <option>A+</option><option>A-</option>
+        <option>B+</option><option>B-</option>
+        <option>O+</option><option>O-</option>
+        <option>AB+</option><option>AB-</option>
+      </select>
+      <button onclick="searchNearby()">🔍 Find Now</button>
+    </div>
+  </section>
+
+  <!-- BLOOD BANK SECTION -->
+  <section id="blood" class="section">
+    <h2>🩸 Live Blood Bank Availability</h2>
+    <div class="cards" id="blood-cards">
+      <p style="color:#666">Loading blood banks...</p>
+    </div>
+  </section>
+
+  <!-- DONOR SECTION -->
+  <section id="donors" class="section">
+    <h2>🧑‍🤝‍🧑 Available Donors Nearby</h2>
+    <div class="cards" id="donor-cards">
+      <p style="color:#666">Loading donors...</p>
+    </div>
+  </section>
+
+  <!-- EMERGENCY AI ADVICE
+  <section class="section" style="background:#fff5f5">
+    <h2>🚨 AI Emergency Advice</h2>
+    <p style="color:#666;margin-bottom:20px">
+      Select a blood type above and get instant
+      AI-powered emergency guidance
+    </p>
+    <button id="emergency-btn"
+      class="register-btn"
+      style="font-size:16px;padding:14px 28px"
+      onclick="getEmergencyAdvice()">
+      🚨 Get Emergency Advice
+    </button>
+    <div id="advice-box" style="margin-top:20px"></div>
+  </section> -->
+
+  <!-- MAP SECTION -->
+  <section id="map" class="section">
+    <h2>📍 Nearest Hospitals & Blood Banks</h2>
+    <div id="map-container"></div>
+  </section>
+
+  <!-- DONOR REGISTRATION MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <h3>Register as Donor</h3>
+      <input type="text" id="donor-name" placeholder="Your Name"/>
+      <input type="text" id="donor-phone" placeholder="Phone Number"/>
+      <select id="donor-blood">
+        <option value="">Select Blood Type</option>
+        <option>A+</option><option>A-</option>
+        <option>B+</option><option>B-</option>
+        <option>O+</option><option>O-</option>
+        <option>AB+</option><option>AB-</option>
+      </select>
+      <button onclick="registerDonor()">Register</button>
+      <button class="close-btn" onclick="closeRegister()">Cancel</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
